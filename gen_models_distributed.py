@@ -7,9 +7,12 @@ import numpy as np
 from PIL import Image
 import sys
 from mpi4py import MPI
+
 cascadePath = "haarcascade_frontalface_default.xml"
 faceCascade = cv2.CascadeClassifier(cascadePath)
 
+# Celle-ci prend en paramètre une liste de fichiers/chemins
+# elle retourne une liste d'images (matrice) et une liste de labels (identité, entier, numéro de l'individu)
 def get_images_and_labels(image_paths):
     """
     Image paths est l'ensemble d'apprentissage
@@ -37,7 +40,7 @@ def get_images_and_labels(image_paths):
     return images, labels
 
 
-# argv[1] : numéro du répertoire si utilisation en mode manuel
+# argv[1:] : liste des noms de fichiers pour l'apprentissage
 if __name__ == '__main__':
 	# Utilisation de LBPH Face Recognizer 
 	recognizer = cv2.createLBPHFaceRecognizer()
@@ -60,13 +63,15 @@ if __name__ == '__main__':
 	else:
 		print('process', rank, 'treating',rank*nbFilesPerModel)
 		images, labels = get_images_and_labels(fileNames[rank*nbFilesPerModel:])
+	
 	cv2.destroyAllWindows()
 	recognizer.train(images, np.array(labels))
 	recognizer.save("./model" + str(rank+1) + ".xml")
+	
 	end_time = MPI.Wtime()
 	if(rank == size -1):
 		print("--- %s secondes en parallèle---" % (end_time - start_time))
-	# Pour éviter d'influer sur le temps de la partie séquentielle
+	# Pour éviter d'influer sur le temps de la partie séquentielle, on fait un Barrier
 	comm.Barrier()
 	""" Partie 'séquentielle' """
 	if rank == 0:
