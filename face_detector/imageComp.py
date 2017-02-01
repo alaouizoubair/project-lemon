@@ -28,7 +28,7 @@ except IndexError:
 cwd = os.getcwd()+'/photos/'+subjectPath+'/'
 
 #Ouvrir l'image avec la librairie Image
-i1 = Image.open(imagePath) #Open image to search for
+i1 = Image.open(imagePath) #Image de l'inconnu
 bestfitpercent = 0 
 bestfitpath= ""
 
