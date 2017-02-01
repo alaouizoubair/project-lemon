@@ -44,7 +44,7 @@ int main(int argc,char** argv){
 		}
 	}
 
-	//Afficher le bilan de la recherche en retournant la personne qui 
+	//Afficher le bilan de la recherche en retournant la personne la plus plausible
 	printf("/******************************************/\n=>Programme tourné en séquentiel\n=>Nombre de processus utilisés: 1\n=>Pourcentage de ressemblance: %.2f % \n=>Source: subject%d\n",maxglob,d+1);
 
 
