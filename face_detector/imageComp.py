@@ -21,7 +21,7 @@ except IndexError:
 try:
 	imagePath = sys.argv[1]
 except IndexError:
-	print("L'image recherchée n'est pas indiqué dans les arguments")
+	print("L'image recherchée n'est pas indiquée dans les arguments")
 
 
 #On ouvre le chemin vers la liste des photos de la personne concerné
