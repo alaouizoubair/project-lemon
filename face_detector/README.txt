@@ -3,7 +3,7 @@
 	1.1 - Objectif
 		Le programme séquentiel établie une reconnaissance facial en comparant les pixels des photos de plusieurs personnes en déduisant le poucentage de ressemblance.
 	1.2 - Exécution du programme
-		$ mpicc imageCompSeq.c -o imageCompSeq
+		$ gcc imageCompSeq.c -o imageCompSeq
 		$ gcc faceRecognitionSeq.C -o faceRecognitionSeq
 		$ ./faceRecognitionSeq <nom_photo_personne_recherchée>
 
