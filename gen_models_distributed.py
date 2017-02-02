@@ -92,4 +92,3 @@ if __name__ == '__main__':
 		print("Travail : %f" %( nbModels*(end_time - start_time)))
 		print("Efficacité : %f" % (speedUp/ nbModels))
 		
-
