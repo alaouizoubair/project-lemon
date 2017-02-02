@@ -34,4 +34,5 @@ if __name__ == '__main__':
 		speedUp = (end_timeS - start_timeS)/(end_time - start_time)
 		print("SpeedUp : %f" % (speedUp))
 		print("Travail : %f" %( nbModels*(end_time - start_time)))
-		print("Efficacité : %f" % (speedUp/ nbModels))	
+		print("Efficacité : %f" % (speedUp/ nbModels))
+		
